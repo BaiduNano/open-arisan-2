@@ -17,7 +17,6 @@ const playlist := {
 	&"jar_close": preload("uid://b5aoifj802yrl"),
 	&"rizz": preload("uid://xi22xe13l36e"),
 	&"wow": preload("uid://8fachf3wlf1i"),
-	&"xeno": preload("uid://d1mq0xwav7eou"),
 	&"lighting": preload("uid://ci4mdkhe7cqaj"),
 	&"crowd": preload("uid://b1o20ooeuadcc"),
 	
@@ -28,14 +27,20 @@ const playlist := {
 	&"hit_small_1": preload("uid://cuc7m6m8ddtmw"),
 	&"hit_small_2": preload("uid://dbkyuva2d6x0o"),
 	
-	&"paper_hint": preload("uid://60wten7uasuo")
+	&"paper_hint": preload("uid://60wten7uasuo"),
+	
+	&"xeno": preload("uid://d1mq0xwav7eou"),
+	&"wallpaper": preload("uid://clvus7nmw2hob")
 }
-
+#"uid://clvus7nmw2hob" wallper
+#uid://bytwt277ibnpw pirate
 static var _reparent_node: Node2D:
 	get: return Arena.others_nodes
 
 var stream_player: AudioStreamPlayer
 var _tween_delay_timer: SceneTreeTimer
+var _last_playback_pos := 0.0
+var _playback_tweener: Tween
 
 static func create(node: Node, streams: Array, options := {&"volume_db": 0.0}) -> SFX:
 	var instance: SFX
@@ -66,7 +71,11 @@ static func create(node: Node, streams: Array, options := {&"volume_db": 0.0}) -
 	for o in options.keys():
 		instance.stream_player.set(o, options[o])
 	
-	instance.stream_player.play.call_deferred()
+	(func():
+		if !instance.stream_player.is_inside_tree():
+			await instance.stream_player.tree_entered
+		instance.stream_player.play()
+	).call_deferred()
 	
 	return instance
 
@@ -96,10 +105,25 @@ func set_pitch_change(val: float) -> SFX:
 func no_pitch_change() -> SFX:
 	return set_pitch_change(1.0)
 
+func continue_playback() -> SFX:
+	play_at(_last_playback_pos)
+	return self
+
 func play_at(offset: float) -> SFX:
-	if stream_player != null:
-		stream_player.stop()
-		stream_player.play.call_deferred(offset)
+	(func():
+		if stream_player != null:
+			if !stream_player.is_inside_tree():
+				await stream_player.tree_entered
+			stream_player.stop()
+			stream_player.play.call_deferred(offset)
+	).call()
+	return self
+
+func stop() -> SFX:
+	_cancel_pending_tween()
+	if is_instance_valid(stream_player):
+		_last_playback_pos = stream_player.get_playback_position() + AudioServer.get_time_since_last_mix()
+	stream_player.stop()
 	return self
 
 func delay(offset: float) -> SFX:
@@ -117,7 +141,7 @@ func is_bgm() -> SFX:
 	if stream_player != null:
 		stream_player.max_polyphony = 1
 		stream_player.bus = Audio.get_bus_str(Audio.AUDIO_BUS.BGM)
-	return process_always()
+	return process_always().no_pitch_change()
 
 func change_volume(to_db: float, smoothing := 1.0) -> SFX:
 	if stream_player != null:
@@ -179,5 +203,16 @@ func _cancel_pending_tween() -> void:
 		_tween_delay_timer = null
 
 func _fadeout_tween(dur) -> void:
-	AutoTween.new(stream_player, &"volume_db", -42.0, dur, Tween.TRANS_LINEAR, Tween.EASE_IN).finished.connect(stream_player.stop)
+	AutoTween.new(stream_player, &"volume_db", -42.0, dur, Tween.TRANS_LINEAR, Tween.EASE_IN).finished.connect(func():
+		if _playback_tweener != null:
+			_playback_tweener.kill()
+			_playback_tweener = null
+		stop()
+	)
+	_playback_tweener = stream_player.create_tween()
+	_playback_tweener.tween_callback(func():
+		if is_instance_valid(stream_player):
+			_last_playback_pos = stream_player.get_playback_position() + AudioServer.get_time_since_last_mix()
+	)
+	
 	_cancel_pending_tween()

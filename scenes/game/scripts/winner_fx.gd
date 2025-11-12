@@ -3,6 +3,7 @@ extends Node
 const confetti_pack_scene := preload("uid://damlvbxf1ikxo")
 const confetti_rain_scene := preload("uid://ccc8qr6gny81l")
 const spotlight_scene := preload("uid://dhga6l105rwpq")
+const bgm_popup_scene := preload("uid://d2paoku5bjocl")
 
 const XENO_FADEOUT := 5.0
 
@@ -19,6 +20,8 @@ func _ready() -> void:
 		GameFX.enable_motion_blur()
 		if !interacted:
 			SFX.create(self, [SFX.playlist.xeno]).no_pitch_change().is_bgm().play_at(53.315).fade_in().fade_out(10.0, 15.0)
+			_add_bgm_info("TheFatRat - Xenogenesis", Color.WHITE)
+			Game.instance.stop_bgm()
 	)
 	WinnerInteractable.static_signals.paper_scaled_to_zero.connect(func():
 		await get_tree().create_timer(0.05).timeout
@@ -39,7 +42,7 @@ func _ready() -> void:
 			VFX.Explosion.CircularExplosion.new(_viewport_center, max(which.size.x, which.size.y) / 1.5, 1.5, Color.WHITE).reparent(Game.vfx_front_node).recalculate_duration()
 		)
 		
-		_spotlight_timer = get_tree().create_timer(XENO_FADEOUT * 2.0, false)
+		_spotlight_timer = get_tree().create_timer(XENO_FADEOUT * 2.5, false)
 		_spotlight_timer.timeout.connect(_spot_light_remove)
 		
 		GameFX.show_dark_overlay(true)
@@ -69,7 +72,8 @@ func _ready() -> void:
 		VFX.Particles.Emoji.remove(which)
 		SFX.get_sfx(self, [SFX.playlist.crowd]).fade_out(5.0)
 		SFX.get_sfx(self, [SFX.playlist.xeno]).fade_out(5.0)
-		
+		if !SFX.get_sfx(Game.instance, [SFX.playlist.wallpaper]).stream_player.playing:
+			Game.instance.play_bgm(5.0)
 		if _spotlight != null:
 			_spotlight.fade_out()
 			if _spotlight_timer.timeout.is_connected(_spot_light_remove):
@@ -93,3 +97,12 @@ func _toggle_cf_rain(b: bool) -> void:
 func _spot_light_remove() -> void:
 	if _spotlight != null:
 		_spotlight.fade_out(5.0)
+	Game.instance.play_bgm(15.0)
+
+
+func _add_bgm_info(what: String, color: Color, alpha := 0.7) -> void:
+	var bgm_info := bgm_popup_scene.instantiate()
+	color.a = alpha
+	bgm_info.text = what
+	bgm_info.color = color
+	Game.ui_node.add_child(bgm_info)

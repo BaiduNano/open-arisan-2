@@ -23,16 +23,17 @@ func set_outside_bottle() -> void:
 	collision_mask = 0
 	collision_layer = 0
 	set_collision_mask_value(1, true)
-	#paper.set_collision_mask_value(10, true)
 	set_collision_layer_value(10, true)
 	get_parent().move_child(self, -1)
 	physics_material_override.bounce = 0.85
 	Bottle.instance.paper_passed.emit(self)
 	var col = default_color
+	var add_vel := Vector2.ONE.rotated(Bottle.instance.global_rotation) * 1000.0
 	col.a = 0.3
 	Trail.new(Arena.others_nodes, self, col).z_index = -1
 	for c in get_children():
 		AutoTween.new(c, &"global_scale", SCALE_ON_GAME)
+	set_axis_velocity(linear_velocity + add_vel) 
 
 func _ready() -> void:
 	contact_monitor = true
@@ -88,8 +89,8 @@ func _contact(_node: Node) -> void:
 	if linear_velocity.length() < CONTACT_SPEED_MINIMUM:
 		return
 		
-	var volume := remap(linear_velocity.length(),0.0, 1000.0, -24.0, -4.0)
-	volume = clampf(volume, -24.0, -4.0)
+	var volume := remap(linear_velocity.length(),0.0, 1000.0, -32.0, -8.0)
+	volume = clampf(volume, -32.0, -8.0)
 	
 	if !is_inside_bottle and !_inactive:
 		VFX.Explosion.CircularExplosion.new(_collision_point, 80.0, 0.66, default_color)

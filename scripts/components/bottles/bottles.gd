@@ -20,6 +20,7 @@ var rect: Rect2:
 @onready var _jar_lid_sprite := %JarLid
 
 var _cursor_inside := false
+var _buffered_cursor_inside := false
 var _grab := false
 var _jar_lid_sprite_init_transform: Transform2D
 var _init_rotation: float
@@ -53,8 +54,10 @@ func _init() -> void:
 
 func _ready() -> void:
 	_touch_area.mouse_entered.connect(func():
+		_buffered_cursor_inside = true
 		if !_grab: _cursor_inside = true)
 	_touch_area.mouse_exited.connect(func():
+		_buffered_cursor_inside = false
 		if !_grab: _cursor_inside = false)
 	_lid_sensor.body_entered.connect(func(body: Node2D):
 		if body is Paper and body.is_inside_bottle:
@@ -75,7 +78,7 @@ func _input(event: InputEvent) -> void:
 		_init_position = _m_pos - global_position
 		_init_rotation = global_rotation
 	if event.is_action_released(&"Grab"):
-		(func(): _grab = false).call_deferred()
+		(func(): _grab = false; _cursor_inside = _buffered_cursor_inside).call_deferred()
 		_last_delta_rotation = _get_delta_rotation() if !_cursor_inside else global_rotation
 
 func _physics_process(delta: float) -> void:

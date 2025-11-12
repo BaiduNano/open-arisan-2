@@ -104,7 +104,7 @@ class Explosion:
 			return self
 			
 	class SquareHighlight:
-		func _init(where: Vector2, color := Color("1a1a1a"),dimension :=  Vector2(292.0, 132.0), minimum_scale := 0.33, thiccness := 8.0, duration := 0.8, filled := false) -> void:
+		func _init(where: Vector2, color := Color("1a1a1a"),dimension :=  Vector2(360.0, 156.0), minimum_scale := 0.33, thiccness := 8.0, duration := 0.8, filled := false) -> void:
 			var pool: ObjectPool = ObjectPoolService.get_pool(scenes.explosions.square)
 			var instance: Node2D = pool.claim_new()
 			instance.thiccness = thiccness

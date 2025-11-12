@@ -81,6 +81,11 @@ func _ready() -> void:
 		for i in range(PaperQueue.get_data().size()):
 			_create_object_from_existing(PaperQueue.get_data()[i], i)
 		toggle_bg.call()
+		
+	SFX.create(self, [SFX.playlist.wallpaper], {&"volume_db": -8.0}).play_at(Game.bgm_playback_pos).is_bgm()
+	tree_exiting.connect(func():
+		Game.bgm_playback_pos = SFX.get_sfx(self, [SFX.playlist.wallpaper]).stream_player.get_playback_position() + AudioServer.get_time_since_last_mix()
+	)
 
 func _create_object_from_existing(data: Dictionary, index: int) -> void:
 	var paper := _create_object(data.content, false, data.color)

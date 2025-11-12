@@ -30,7 +30,7 @@ hue_variation_max = 0.99999994
 [node name="Confetti2" type="GPUParticles2D"]
 rotation = -1.0471976
 emitting = false
-amount = 156
+amount = 200
 lifetime = 5.0
 one_shot = true
 speed_scale = 2.0

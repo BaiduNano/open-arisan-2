@@ -2,6 +2,7 @@ class_name Game extends Node
 
 static var instance: Game
 
+static var bgm_playback_pos: float
 static var vfx_node: CanvasLayer:
 	get: return instance.get_node("%VFX")
 static var vfx_front_node: CanvasLayer:
@@ -19,6 +20,15 @@ var _menu_scene := load("uid://bsdr2ntqoxu8l")
 @onready var _fps := %FPS
 
 var _is_menu_shown := true
+
+func play_bgm(fading := 0.0) -> void:
+	var bgm := SFX.create(self, [SFX.playlist.wallpaper], {&"volume_db": -8.0}).play_at(bgm_playback_pos).is_bgm()
+	if fading != 0.0:
+		bgm.fade_in(fading)
+
+func stop_bgm() -> void:
+	bgm_playback_pos = SFX.get_sfx(self, [SFX.playlist.wallpaper]).stream_player.get_playback_position() + AudioServer.get_time_since_last_mix()
+	SFX.get_sfx(self, [SFX.playlist.wallpaper]).stop()
 
 func _init() -> void:
 	instance = self
@@ -58,6 +68,8 @@ func _ready() -> void:
 	_hide_menu.call_deferred()
 	
 	_update_fps()
+	play_bgm()
+	tree_exiting.connect(stop_bgm)
 
 func _show_menu() -> void:
 	if _is_menu_shown:
