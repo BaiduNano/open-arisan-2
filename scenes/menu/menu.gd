@@ -16,6 +16,7 @@ signal file_added(data: Variant)
 static var instance: MainMenu
 static var ui_node: CanvasLayer:
 	get: return instance.get_node("%UI")
+static var init := true
 	
 static var _paper_scene: PackedScene = preload("uid://dugdwg88q3hsa")
 static var _paper_cont_scene: PackedScene = preload("uid://f285gc3buqk")
@@ -53,6 +54,13 @@ func _ready() -> void:
 	)
 	
 	(func(): _init_down_pos_y = _down_cont.position.y).call_deferred()
+	get_tree().create_timer(0.1).timeout.connect(func():
+		if !init:
+			return
+		Audio.set_master_vol(100.0)
+		SFX.create(self, [SFX.playlist.wallpaper], {&"volume_db": -8.0})
+		init = false
+	)
 	
 	var toggle_bg = func():
 		if PaperQueue.get_data().is_empty(): %BG.modulate.a = 1.0

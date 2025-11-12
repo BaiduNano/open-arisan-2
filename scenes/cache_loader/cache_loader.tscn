@@ -1,6 +1,72 @@
-[gd_scene load_steps=2 format=3 uid="uid://dlkw23a56je3m"]
+[gd_scene load_steps=6 format=3 uid="uid://dlkw23a56je3m"]
 
 [ext_resource type="Script" uid="uid://dxqlk23sapaci" path="res://scenes/cache_loader/cache_loader.gd" id="1_baf7k"]
+[ext_resource type="PackedScene" uid="uid://b5q4vk5sol5pb" path="res://scenes/game/game.tscn" id="2_6abnm"]
+[ext_resource type="Theme" uid="uid://cvocwk6x1wj7h" path="res://config/themes/global.tres" id="3_yp4m6"]
+[ext_resource type="FontFile" uid="uid://xme5aeq8q7r7" path="res://resources/fonts/caskaydia/CaskaydiaCoveNerdFont-Bold.ttf" id="4_b4hra"]
+[ext_resource type="Texture2D" uid="uid://cdt0yhjeyu5e" path="res://resources/images/sprites/myarisan 2_title.png" id="5_bt7ia"]
 
-[node name="CacheLoader" type="Node"]
+[node name="CacheLoader" type="Node2D"]
 script = ExtResource("1_baf7k")
+
+[node name="Game" parent="." instance=ExtResource("2_6abnm")]
+
+[node name="UI" type="CanvasLayer" parent="."]
+layer = 10
+
+[node name="ColorRect" type="ColorRect" parent="UI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("3_yp4m6")
+
+[node name="CenterContainer" type="VBoxContainer" parent="UI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("3_yp4m6")
+
+[node name="Control" type="Control" parent="UI/CenterContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/CenterContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Control2" type="Control" parent="UI/CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="UI/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_yp4m6")
+theme_override_fonts/font = ExtResource("4_b4hra")
+text = "Loading Cache...
+May take a while."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control3" type="Control" parent="UI/CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TextureRect" type="TextureRect" parent="UI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("5_bt7ia")
+expand_mode = 1
+stretch_mode = 5

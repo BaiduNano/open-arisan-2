@@ -2,7 +2,7 @@ extends Node
 
 const MAX_SIZE := 100
 
-const F_TEXT := [&"", &"txt", &"conf", &"ini"]
+const F_TEXT := [] #[&"", &"txt", &"conf", &"ini"]
 const F_IMAGE := [&"png", &"jpg", &"jpeg", &"webp"]
 const THEME := preload("res://config/themes/global.tres")
 

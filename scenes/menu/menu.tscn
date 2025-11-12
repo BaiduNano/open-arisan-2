@@ -1,10 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://bsdr2ntqoxu8l"]
+[gd_scene load_steps=13 format=3 uid="uid://bsdr2ntqoxu8l"]
 
 [ext_resource type="Script" uid="uid://cheigtpaabp08" path="res://scenes/menu/scripts/data_importer.gd" id="1_klgdb"]
 [ext_resource type="Script" uid="uid://bjs3j1xn3kysa" path="res://scenes/menu/menu.gd" id="1_mcvr8"]
 [ext_resource type="Script" uid="uid://b3asaxerjlaf5" path="res://scenes/menu/scripts/debug/debug_import.gd" id="3_e0arn"]
 [ext_resource type="Theme" uid="uid://cvocwk6x1wj7h" path="res://config/themes/global.tres" id="4_037ec"]
-[ext_resource type="Script" uid="uid://ce6gjgfwd7k1c" path="res://scenes/menu/version_checker.gd" id="4_k48pe"]
 [ext_resource type="Texture2D" uid="uid://b0f5lxaw3avta" path="res://resources/images/sprites/myarisan_little.png" id="5_r8yej"]
 [ext_resource type="FontFile" uid="uid://xme5aeq8q7r7" path="res://resources/fonts/caskaydia/CaskaydiaCoveNerdFont-Bold.ttf" id="5_y1o0p"]
 [ext_resource type="Script" uid="uid://dd74tqstpe0mn" path="res://scenes/menu/scripts/scroll_container.gd" id="6_t0a87"]
@@ -57,9 +56,6 @@ script = ExtResource("1_klgdb")
 
 [node name="DebugImport" type="Node" parent="Scripts"]
 script = ExtResource("3_e0arn")
-
-[node name="VersionChecker" type="Node" parent="Scripts"]
-script = ExtResource("4_k48pe")
 
 [node name="Background" type="CanvasLayer" parent="."]
 unique_name_in_owner = true

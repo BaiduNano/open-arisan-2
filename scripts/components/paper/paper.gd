@@ -28,12 +28,11 @@ func set_outside_bottle() -> void:
 	physics_material_override.bounce = 0.85
 	Bottle.instance.paper_passed.emit(self)
 	var col = default_color
-	var add_vel := Vector2.ONE.rotated(Bottle.instance.global_rotation) * 1000.0
 	col.a = 0.3
+	linear_velocity += Vector2(-1.0, 0.0).rotated(Bottle.instance.global_rotation + PI/2.0) * 1000.0
 	Trail.new(Arena.others_nodes, self, col).z_index = -1
 	for c in get_children():
 		AutoTween.new(c, &"global_scale", SCALE_ON_GAME)
-	set_axis_velocity(linear_velocity + add_vel) 
 
 func _ready() -> void:
 	contact_monitor = true

@@ -91,7 +91,10 @@ func _physics_process(delta: float) -> void:
 	var angle := _get_delta_rotation() if _grab else _last_delta_rotation
 	var delt := (Vector2.from_angle(global_rotation) - Vector2.from_angle(angle) ).length()
 	global_rotation = rotate_toward(global_rotation, angle, delt * delta * ROT_SPEED)
-	velocity = lerp(velocity, Vector2.ZERO, delta * 10.0)
+	if !App.data.web_build and !App.data.android_build:
+		velocity = lerp(velocity, Vector2.ZERO, delta * 10.0)
+	else:
+		velocity = Vector2.ZERO
 	move_and_slide.call_deferred()
 	_cap_to_viewport.call_deferred()
 
