@@ -76,7 +76,7 @@ func _ready() -> void:
 		get_tree().create_timer(0.5).timeout.connect(GameFX.disable_motion_blur)
 		VFX.Particles.Emoji.remove(which)
 		SFX.get_sfx(self, [SFX.playlist.crowd]).fade_out(5.0)
-		if Game.is_bgm_on:
+		if SFX.get_sfx(self, [SFX.playlist.xeno]) != null:
 			SFX.get_sfx(self, [SFX.playlist.xeno]).fade_out(5.0)
 		if !SFX.get_sfx(Game.instance, [SFX.playlist.wallpaper]).stream_player.playing:
 			Game.instance.play_bgm(5.0)

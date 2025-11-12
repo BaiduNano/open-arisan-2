@@ -31,7 +31,7 @@ const playlist := {
 	
 	&"xeno": preload("uid://d1mq0xwav7eou"),
 	&"wallpaper": preload("uid://clvus7nmw2hob"),
-	&"drum_roll": preload("uid://dier8e2wlovyk"),
+	&"drum_roll": preload("uid://br1vktbr7tmxo"),
 	&"cymbal": preload("uid://nomcjqym7wfd")
 }
 #"uid://clvus7nmw2hob" wallper
