@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c6ln1xhbik0ws"
+path="res://.godot/imported/DSGNTonl_USABLE-Toony Zap_HY_PC-006.wav-ad4dd6cbd774293daf09f04636c2a418.sample"
+
+[deps]
+
+source_file="res://resources/sfx/helton-yan's-pixel-combat/DSGNTonl_USABLE-Toony Zap_HY_PC-006.wav"
+dest_files=["res://.godot/imported/DSGNTonl_USABLE-Toony Zap_HY_PC-006.wav-ad4dd6cbd774293daf09f04636c2a418.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -27,6 +27,7 @@ static var _paper_cont_scene: PackedScene = preload("uid://f285gc3buqk")
 @onready var _down_cont := %DownVBoxContainer
 @onready var _top_mask := %TopMask
 @onready var _ammount := %Ammount
+@onready var _toggle_music_button := %MusicButton
 
 var _game_scene: PackedScene = load("uid://b5q4vk5sol5pb")
 var _init_down_pos_y: float
@@ -52,6 +53,8 @@ func _ready() -> void:
 			alert.exit.call_deferred()
 		)
 	)
+	_toggle_music_button.pressed.connect(Game.toggle_bgm.bind(_toggle_music_button))
+	_toggle_music_button.text = "󰝛" if !Game.is_bgm_on else "󰝚"
 	
 	(func(): _init_down_pos_y = _down_cont.position.y).call_deferred()
 	get_tree().create_timer(0.1).timeout.connect(func():

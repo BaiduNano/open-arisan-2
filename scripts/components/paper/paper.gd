@@ -66,7 +66,7 @@ func _ready() -> void:
 		Trail.remove(self)
 		for i in range(2):
 			_anim_shake()
-			SFX.create(Game.instance, [SFX.playlist.paper_hint], {&"volume_db": 6.0})
+			SFX.create(Game.instance, [SFX.playlist.paper_hint])
 			for j in range(3):
 				VFX.Explosion.SquareHighlight.new(global_position, default_color)
 				await get_tree().create_timer(0.1, false).timeout

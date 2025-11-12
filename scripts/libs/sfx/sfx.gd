@@ -27,7 +27,7 @@ const playlist := {
 	&"hit_small_1": preload("uid://cuc7m6m8ddtmw"),
 	&"hit_small_2": preload("uid://dbkyuva2d6x0o"),
 	
-	&"paper_hint": preload("uid://60wten7uasuo"),
+	&"paper_hint": preload("uid://c6ln1xhbik0ws"),
 	
 	&"xeno": preload("uid://d1mq0xwav7eou"),
 	&"wallpaper": preload("uid://clvus7nmw2hob")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://b5q4vk5sol5pb"]
+[gd_scene load_steps=19 format=4 uid="uid://b5q4vk5sol5pb"]
 
 [ext_resource type="Script" uid="uid://camh0v5gtnqs8" path="res://scenes/game/game.gd" id="1_sul5r"]
 [ext_resource type="Theme" uid="uid://cvocwk6x1wj7h" path="res://config/themes/global.tres" id="2_0sr1o"]
@@ -19,6 +19,12 @@ texture_region_size = Vector2i(64, 64)
 [sub_resource type="TileSet" id="TileSet_kp23o"]
 tile_size = Vector2i(64, 64)
 sources/1 = SubResource("TileSetAtlasSource_2a8rs")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4j704"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kp23o"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5jirj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5i0tg"]
 bg_color = Color(1, 1, 1, 1)
@@ -162,6 +168,21 @@ theme = ExtResource("2_0sr1o")
 theme_override_fonts/font = ExtResource("3_kelw5")
 toggle_mode = true
 text = "Buka Toples"
+script = ExtResource("10_4j704")
+
+[node name="MusicButton" type="Button" parent="UI/MenuContainer/PanelContainer/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("2_0sr1o")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_kelw5")
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxEmpty_4j704")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_kp23o")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_5jirj")
+text = "󰝚"
 script = ExtResource("10_4j704")
 
 [node name="Spacer" type="Control" parent="UI/MenuContainer/PanelContainer/MarginContainer/HBoxContainer"]

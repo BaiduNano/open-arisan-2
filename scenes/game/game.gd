@@ -3,6 +3,7 @@ class_name Game extends Node
 static var instance: Game
 
 static var bgm_playback_pos: float
+static var is_bgm_on := true
 static var vfx_node: CanvasLayer:
 	get: return instance.get_node("%VFX")
 static var vfx_front_node: CanvasLayer:
@@ -17,9 +18,15 @@ var _menu_scene := load("uid://bsdr2ntqoxu8l")
 @onready var _back_button := %BackButton
 @onready var _menu_container := %MenuContainer
 @onready var _toggle_menu_button := %ToggleMenu
+@onready var _toggle_music_button := %MusicButton
 @onready var _fps := %FPS
 
 var _is_menu_shown := true
+
+static func toggle_bgm(button: Button) -> void:
+	is_bgm_on = !is_bgm_on
+	button.text = "󰝛" if !is_bgm_on else "󰝚"
+	Audio.set_bgm_vol(0.0 if !is_bgm_on else 100.0)
 
 func play_bgm(fading := 0.0) -> void:
 	var bgm := SFX.create(self, [SFX.playlist.wallpaper], {&"volume_db": -8.0}).play_at(bgm_playback_pos).is_bgm()
@@ -52,6 +59,8 @@ func _ready() -> void:
 		if _is_menu_shown: _hide_menu()
 		else: _show_menu()
 	)
+	_toggle_music_button.pressed.connect(toggle_bgm.bind(_toggle_music_button))
+	_toggle_music_button.text = "󰝛" if !is_bgm_on else "󰝚"
 	
 	_fps.visible = App.data.debug_build
 		

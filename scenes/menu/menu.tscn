@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bsdr2ntqoxu8l"]
+[gd_scene load_steps=16 format=3 uid="uid://bsdr2ntqoxu8l"]
 
 [ext_resource type="Script" uid="uid://cheigtpaabp08" path="res://scenes/menu/scripts/data_importer.gd" id="1_klgdb"]
 [ext_resource type="Script" uid="uid://bjs3j1xn3kysa" path="res://scenes/menu/menu.gd" id="1_mcvr8"]
@@ -9,6 +9,12 @@
 [ext_resource type="Script" uid="uid://dd74tqstpe0mn" path="res://scenes/menu/scripts/scroll_container.gd" id="6_t0a87"]
 [ext_resource type="Texture2D" uid="uid://c3gp8hlf1ccbu" path="res://resources/images/sprites/myarisan 2.png" id="7_3y2rt"]
 [ext_resource type="Script" uid="uid://c74uhqwujehas" path="res://scripts/libs/button/general_button.gd" id="7_qo0fc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qo0fc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k48pe"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f2fum"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y1o0p"]
 bg_color = Color(1, 1, 1, 1)
@@ -96,17 +102,39 @@ size_flags_vertical = 3
 theme = ExtResource("4_037ec")
 theme_override_constants/margin_left = 32
 theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
 theme_override_constants/margin_bottom = 100
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer"]
 layout_mode = 2
 
-[node name="Ammount" type="Label" parent="UI/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Ammount" type="Label" parent="UI/MarginContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
 text = "Peserta: 30"
+
+[node name="Separator" type="Control" parent="UI/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MusicButton" type="Button" parent="UI/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("4_037ec")
+theme_override_fonts/font = ExtResource("5_y1o0p")
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxEmpty_qo0fc")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_k48pe")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_f2fum")
+text = "󰝚"
+script = ExtResource("7_qo0fc")
 
 [node name="Separator" type="Control" parent="UI/MarginContainer/VBoxContainer"]
 layout_mode = 2

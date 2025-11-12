@@ -32,9 +32,11 @@ var _m_pos: Vector2:
 	get: return get_global_mouse_position()
 var _viewport_size: Vector2:
 	get: return get_viewport().get_visible_rect().size
+var _paper_out_ammount: int
 
 func open_lid() -> void:
 	_lid.process_mode = Node.PROCESS_MODE_DISABLED
+	_paper_out_ammount = 0
 	_lid_sensor.set_deferred(&"monitoring", true)
 	var tgt_pos := Vector2(-16.0, -128) + _jar_lid_sprite_init_transform.origin
 	AutoTween.new(_jar_lid_sprite, &"position", tgt_pos, LID_ANIM_DUR)
@@ -60,8 +62,9 @@ func _ready() -> void:
 		_buffered_cursor_inside = false
 		if !_grab: _cursor_inside = false)
 	_lid_sensor.body_entered.connect(func(body: Node2D):
-		if body is Paper and body.is_inside_bottle:
+		if body is Paper and body.is_inside_bottle and _paper_out_ammount == 0:
 			body.set_outside_bottle()
+			_paper_out_ammount += 1
 	)
 	(func(): _jar_lid_sprite_init_transform = _jar_lid_sprite.transform).call_deferred()
 	close_lid.call_deferred()
