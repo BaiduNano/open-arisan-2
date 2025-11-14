@@ -22,15 +22,17 @@ var _error_max_dialogue: Alert
 func process_text(text: String) -> void:
 	var spliced := text.split(SPLIT_STRING)
 	var ammount := PaperQueue.get_data().size()
-	await get_tree().process_frame
+	var regex_whitespace := RegEx.create_from_string("^\\s+|\\s+$")
+	
 	for s in spliced:
+		var trimmed_text := regex_whitespace.sub(s, "", true)
 		await get_tree().process_frame
 		if ammount >= MAX_SIZE:
 			_throw_max_error.call_deferred()
 			return
-		if s.is_empty():
+		if trimmed_text.is_empty():
 			continue
-		_menu.file_added.emit.call_deferred(s)
+		_menu.file_added.emit.call_deferred(trimmed_text)
 		ammount += 1
 
 func _ready() -> void:
@@ -88,7 +90,7 @@ func _files_picked_web(file_name: String, _file_type: String, base64_data: Strin
 		return
 	if F_TEXT.has(extension):
 		var text := raw_data.get_string_from_multibyte_char()
-		process_text.call_deferred(text)
+		process_text(text)
 	elif F_IMAGE.has(extension):
 		var image := _process_image_web(raw_data, extension)
 		var texture := ImageTexture.create_from_image(image)

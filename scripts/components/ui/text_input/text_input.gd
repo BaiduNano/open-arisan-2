@@ -9,6 +9,9 @@ signal finished
 
 var _data_importer: Node:
 	get: return MainMenu.instance.get_node("%DataImporter")
+var _scroll_cont: ScrollContainer:
+	get: return MainMenu.instance.get_node("%ScrollContainer")
+var _regex := RegEx.create_from_string("[^\\n\\s\\t$]")
 
 func _ready() -> void:
 	Animate.fade_in(self)
@@ -20,10 +23,14 @@ func _ready() -> void:
 		_text_edit.focus_mode = Control.FOCUS_NONE
 		await Animate.fade_out(self).finished
 		finished.emit()
+		_scroll_cont.grab_focus()
 		queue_free()
 	)
 	_text_edit.text_changed.connect(func():
-		_add_button.disabled = _text_edit.text.is_empty()
+		## Regex if there's only newlines and spaces
+		var res := _regex.search(_text_edit.text)
+		_add_button.disabled = _text_edit.text.is_empty() or res == null
+		SFX.create(self, [SFX.playlist.button_hover])
 	)
 	_text_edit.text_changed.emit()
 	_add_button.pressed.connect(func():

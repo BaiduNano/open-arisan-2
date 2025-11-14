@@ -30,9 +30,8 @@ func _create_paper(data: Variant, append_data := true, color = null) -> Paper:
 	
 	if color != null:
 		paper.default_color = color
-	
-	_grid.add_child(paper_cont)
-	center_point.add_child(paper)
+	else:
+		paper.default_color = _get_random_color()
 
 	var queue_data := {
 		&"id": paper.get_instance_id(),
@@ -40,6 +39,9 @@ func _create_paper(data: Variant, append_data := true, color = null) -> Paper:
 		&"color": paper.default_color
 	}
 	
+	_grid.add_child(paper_cont)
+	center_point.add_child(paper)
+
 	paper.queue_data = queue_data
 	paper.owner = paper_cont
 	paper.set_physics_process(false)
@@ -50,3 +52,7 @@ func _create_paper(data: Variant, append_data := true, color = null) -> Paper:
 		PaperQueue.append_data(queue_data)
 	
 	return paper
+
+func _get_random_color(saturation: float = 1.0, value: float = 1.0) -> Color:
+	var random_hue = randf() 
+	return Color.from_hsv(random_hue, saturation, value)

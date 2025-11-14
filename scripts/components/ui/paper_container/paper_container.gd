@@ -78,8 +78,8 @@ func _create_inspector() -> void:
 func _remove_inspector() -> void:
 	if !is_instance_valid(inspect):
 		return
-	AutoTween.new(inspect, &"scale", Vector2(0.8, 0.8), 0.33)
-	AutoTween.new(inspect, &"modulate:a", 0.0, 0.33).finished.connect(inspect.queue_free)
+	inspect.animate_out()
+	inspect.deactivate_buttons.call_deferred()
 	active_container = null
 	static_signals.inspector_deactivated.emit()
 

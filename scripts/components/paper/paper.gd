@@ -50,9 +50,6 @@ func _ready() -> void:
 			if !is_inside_bottle:
 				continue
 			c.global_scale = target_scale
-
-	if default_color == null:
-		default_color = _get_random_color()
 		
 	_straw.modulate = default_color
 	
@@ -117,10 +114,6 @@ func _physics_process(_delta: float) -> void:
 	var max_dist := bottle.rect.size.y / 1.5
 	if global_position.distance_to(bottle.global_position) >= max_dist:
 		global_position = bottle.global_position
-		
-func _get_random_color(saturation: float = 1.0, value: float = 1.0) -> Color:
-	var random_hue = randf() 
-	return Color.from_hsv(random_hue, saturation, value)
 
 func _anim_shake() -> void:
 	var amount = 7.0 * [-1, 1].pick_random()

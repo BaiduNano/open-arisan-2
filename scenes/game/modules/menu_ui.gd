@@ -14,6 +14,7 @@ var _is_menu_shown := true
 func _ready() -> void:
 	_back_button.pressed.connect(func():
 		SceneManager.change_scene(_menu_scene, false, true, true)
+		SceneManager.half_finished.connect(Game.stop_bgm, CONNECT_ONE_SHOT)
 	)
 	_open_button.toggled.connect(func(b: bool):
 		_hide_menu()

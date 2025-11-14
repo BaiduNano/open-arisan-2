@@ -25,3 +25,4 @@ func _ready() -> void:
 	)
 	(func(): _init_down_pos_y = _down_cont.position.y).call_deferred()
 	_top_mask.hide()
+	PaperQueue.data_changed.emit.call_deferred()

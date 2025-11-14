@@ -187,7 +187,9 @@ theme_override_constants/margin_right = 32
 theme_override_constants/margin_bottom = 162
 
 [node name="ScrollContainer" type="ScrollContainer" parent="UI/Grid"]
+unique_name_in_owner = true
 layout_mode = 2
+focus_mode = 3
 mouse_filter = 2
 horizontal_scroll_mode = 0
 script = ExtResource("6_t0a87")

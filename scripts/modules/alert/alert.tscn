@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://1w8nu40os8cu"]
+[gd_scene load_steps=6 format=3 uid="uid://1w8nu40os8cu"]
 
 [ext_resource type="Theme" uid="uid://cvocwk6x1wj7h" path="res://config/themes/global.tres" id="1_1ohp1"]
 [ext_resource type="Script" uid="uid://bd4bn0y3wrqe5" path="res://scripts/modules/alert/alert.gd" id="1_cbyvl"]
 [ext_resource type="Script" uid="uid://c74uhqwujehas" path="res://scripts/modules/button/general_button.gd" id="3_6746o"]
+[ext_resource type="FontFile" uid="uid://xme5aeq8q7r7" path="res://resources/fonts/caskaydia/CaskaydiaCoveNerdFont-Bold.ttf" id="3_rrfdk"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xcodj"]
 bg_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
@@ -74,11 +75,13 @@ theme_override_constants/separation = 10
 
 [node name="Yes" type="Button" parent="MarginContainer/Panel/Menu/VBoxContainer/Buttons"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(80, 32)
+custom_minimum_size = Vector2(92, 42)
 layout_mode = 2
 size_flags_horizontal = 3
 focus_neighbor_left = NodePath("../No")
 focus_neighbor_right = NodePath("../No")
+focus_mode = 0
+theme_override_fonts/font = ExtResource("3_rrfdk")
 text = "Iya"
 script = ExtResource("3_6746o")
 
@@ -88,10 +91,12 @@ size_flags_horizontal = 3
 
 [node name="No" type="Button" parent="MarginContainer/Panel/Menu/VBoxContainer/Buttons"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(80, 32)
+custom_minimum_size = Vector2(92, 42)
 layout_mode = 2
 size_flags_horizontal = 3
 focus_neighbor_left = NodePath("../Yes")
 focus_neighbor_right = NodePath("../Yes")
+focus_mode = 0
+theme_override_fonts/font = ExtResource("3_rrfdk")
 text = "Tidak"
 script = ExtResource("3_6746o")
