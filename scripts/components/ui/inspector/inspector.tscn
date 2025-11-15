@@ -135,7 +135,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_qmjp7")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_x3wfo")
 theme_override_styles/hover = SubResource("StyleBoxFlat_0aum5")
 action_mode = 0
-text = "Ganti"
+text = "B_CHANGE"
 script = ExtResource("3_72us0")
 
 [node name="DeleteButton" type="Button" parent="CenterContainer/InspectContainer/Down"]
@@ -155,5 +155,5 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_qmjp7")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_x3wfo")
 theme_override_styles/hover = SubResource("StyleBoxFlat_0aum5")
 action_mode = 0
-text = "Hapus"
+text = "B_REMOVE"
 script = ExtResource("3_72us0")

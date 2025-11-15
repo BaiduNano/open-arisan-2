@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c43gkngan5ch1"]
+[gd_scene load_steps=11 format=3 uid="uid://c43gkngan5ch1"]
 
 [ext_resource type="Script" uid="uid://p5pq2a2xkh27" path="res://scripts/components/bottles/bottles.gd" id="1_w286a"]
 [ext_resource type="Texture2D" uid="uid://0taj1ff0gh4i" path="res://resources/images/sprites/jar_open.svg" id="2_v48bn"]
@@ -12,6 +12,9 @@ size = Vector2(200, 16)
 size = Vector2(40, 48)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_svmpa"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_svmpa"]
+size = Vector2(200, 114)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_m2pje"]
 
@@ -62,6 +65,10 @@ shape = SubResource("WorldBoundaryShape2D_svmpa")
 [node name="Boundary3" type="CollisionShape2D" parent="."]
 position = Vector2(0, 200)
 shape = SubResource("WorldBoundaryShape2D_svmpa")
+
+[node name="TopCollision" type="CollisionShape2D" parent="."]
+position = Vector2(92, -209)
+shape = SubResource("RectangleShape2D_svmpa")
 
 [node name="Jar" type="Sprite2D" parent="."]
 modulate = Color(0.101960786, 0.101960786, 0.101960786, 1)

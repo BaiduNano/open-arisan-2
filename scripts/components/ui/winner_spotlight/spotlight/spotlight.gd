@@ -1,7 +1,7 @@
 @tool
 extends Node2D
 
-@export var speed := 0.3
+@export var speed := 0.18
 @export var offset_angle := 50.0
 @export var flip_h := false
 

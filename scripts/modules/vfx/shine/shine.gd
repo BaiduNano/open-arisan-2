@@ -7,7 +7,7 @@ var force_center: bool
 
 @onready var lights := [
 	{"node": $PointLight2D, "energy": $PointLight2D.energy},
-	{"node": $PointLight2D2, "energy": $PointLight2D2.energy}
+	#{"node": $PointLight2D2, "energy": $PointLight2D2.energy}
 ]
 
 func _ready() -> void:

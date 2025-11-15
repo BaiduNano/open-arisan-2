@@ -1,16 +1,11 @@
 extends Node
 
-@onready var _ammount := %Ammount
 @onready var _down_cont := %DownVBoxContainer
 @onready var _top_mask := %TopMask
 
 var _init_down_pos_y: float
 
 func _ready() -> void:
-	PaperQueue.data_changed.connect(func():
-		if !PaperQueue.get_data().is_empty(): _ammount.text = "Peserta: %d" % PaperQueue.get_data().size()
-		else: _ammount.text = ""
-	)
 	UIPreviewer.static_signal.previewer_toggled.connect(func(b: bool):
 		AutoTween.new(_down_cont, &"position:y", _init_down_pos_y + 162.0 if b else _init_down_pos_y)
 	)

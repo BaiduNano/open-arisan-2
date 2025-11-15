@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bsdr2ntqoxu8l"]
+[gd_scene load_steps=23 format=3 uid="uid://bsdr2ntqoxu8l"]
 
 [ext_resource type="Script" uid="uid://cheigtpaabp08" path="res://scenes/menu/modules/data_importer.gd" id="1_klgdb"]
 [ext_resource type="Script" uid="uid://bjs3j1xn3kysa" path="res://scenes/menu/menu.gd" id="1_mcvr8"]
@@ -13,6 +13,9 @@
 [ext_resource type="Texture2D" uid="uid://c3gp8hlf1ccbu" path="res://resources/images/sprites/myarisan 2.png" id="7_3y2rt"]
 [ext_resource type="Script" uid="uid://c74uhqwujehas" path="res://scripts/modules/button/general_button.gd" id="7_qo0fc"]
 [ext_resource type="PackedScene" uid="uid://blbtgy1lubmj4" path="res://scripts/components/text_to_texture/text_to_texture.tscn" id="7_y4i35"]
+[ext_resource type="Texture2D" uid="uid://bgwj8ma2v1y0" path="res://export/web/index.png" id="8_rcuxh"]
+[ext_resource type="Script" uid="uid://d02xwcnhil11m" path="res://scripts/modules/button/texture_button.gd" id="11_64m6r"]
+[ext_resource type="Texture2D" uid="uid://dm3okcux6wlug" path="res://resources/images/sprites/id.png" id="11_pjdsv"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qo0fc"]
 
@@ -102,13 +105,29 @@ unique_name_in_owner = true
 [node name="UI" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
 
-[node name="BG" type="TextureRect" parent="UI"]
+[node name="BGCont" type="BoxContainer" parent="UI"]
 unique_name_in_owner = true
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="BGEN" type="TextureRect" parent="UI/BGCont"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("8_rcuxh")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="BGID" type="TextureRect" parent="UI/BGCont"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
 texture = ExtResource("7_3y2rt")
 expand_mode = 1
 stretch_mode = 5
@@ -143,6 +162,18 @@ text = "Peserta: 30"
 [node name="Separator" type="Control" parent="UI/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="LangButton" type="TextureButton" parent="UI/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+texture_filter = 1
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("4_037ec")
+texture_normal = ExtResource("11_pjdsv")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("11_64m6r")
 
 [node name="MusicButton" type="Button" parent="UI/MarginContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
@@ -275,12 +306,12 @@ alignment = 1
 
 [node name="ClearButton" type="Button" parent="UI/Down/DownVBoxContainer/PanelContainer/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(128, 42)
+custom_minimum_size = Vector2(186, 42)
 layout_mode = 2
 size_flags_vertical = 4
 focus_mode = 0
 theme_override_fonts/font = ExtResource("5_y1o0p")
-text = "  Hapus Semua  "
+text = "B_ERASE_ALL"
 script = ExtResource("7_qo0fc")
 
 [node name="Separator" type="Control" parent="UI/Down/DownVBoxContainer/PanelContainer/MarginContainer/HBoxContainer"]
@@ -290,12 +321,12 @@ mouse_filter = 2
 
 [node name="StartButton" type="Button" parent="UI/Down/DownVBoxContainer/PanelContainer/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(128, 42)
+custom_minimum_size = Vector2(186, 42)
 layout_mode = 2
 size_flags_vertical = 4
 focus_mode = 0
 theme_override_fonts/font = ExtResource("5_y1o0p")
-text = "  Mulai Ngocok  "
+text = "B_START"
 script = ExtResource("7_qo0fc")
 
 [node name="TopMask" type="ColorRect" parent="UI"]

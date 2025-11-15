@@ -17,7 +17,7 @@ color = Color(0.20871013, 0.20871016, 0.20871013, 1)
 
 [node name="Spotlight" type="Node2D" parent="Container"]
 unique_name_in_owner = true
-rotation = -0.48327255
+rotation = -0.84381306
 
 [node name="ShineCone" type="Sprite2D" parent="Container/Spotlight"]
 modulate = Color(1, 1, 1, 0.39215687)

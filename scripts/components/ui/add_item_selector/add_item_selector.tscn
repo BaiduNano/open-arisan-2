@@ -52,7 +52,7 @@ custom_minimum_size = Vector2(0, 72)
 layout_mode = 2
 focus_mode = 0
 theme_override_fonts/font = ExtResource("2_s26o8")
-text = "  Tambahkan File"
+text = "B_ADD_FILES"
 script = ExtResource("4_p64km")
 
 [node name="AddFilesLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
@@ -60,8 +60,7 @@ unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 0.39215687)
 theme_override_font_sizes/font_size = 14
-text = "Dapat berupa gambar (PNG, JPG),
-maupun sekumpulan teks (TXT)."
+text = "L_ADD_FILES"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -75,7 +74,7 @@ custom_minimum_size = Vector2(0, 72)
 layout_mode = 2
 focus_mode = 0
 theme_override_fonts/font = ExtResource("2_s26o8")
-text = "󰦨  Tulis Teks"
+text = "B_ADD_TEXT"
 script = ExtResource("4_p64km")
 
 [node name="AddTextLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
@@ -83,7 +82,7 @@ unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 0.39215687)
 theme_override_font_sizes/font_size = 14
-text = "Menambahkan teks secara manual."
+text = "L_ADD_TEXT"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -98,5 +97,5 @@ layout_mode = 2
 size_flags_horizontal = 4
 focus_mode = 0
 theme_override_fonts/font = ExtResource("2_s26o8")
-text = "Kembali"
+text = "B_BACK"
 script = ExtResource("4_p64km")

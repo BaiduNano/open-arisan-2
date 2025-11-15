@@ -183,7 +183,7 @@ mouse_filter = 1
 theme = ExtResource("2_0sr1o")
 theme_override_fonts/font = ExtResource("3_kelw5")
 toggle_mode = true
-text = "Buka Toples"
+text = "B_OPEN_LID"
 script = ExtResource("10_4j704")
 
 [node name="MusicButton" type="Button" parent="UI/MenuContainer/PanelContainer/MarginContainer/HBoxContainer"]
@@ -216,7 +216,7 @@ focus_mode = 0
 mouse_filter = 1
 theme = ExtResource("2_0sr1o")
 theme_override_fonts/font = ExtResource("3_kelw5")
-text = "Ulangi"
+text = "B_RESTART"
 script = ExtResource("10_4j704")
 
 [node name="BackButton" type="Button" parent="UI/MenuContainer/PanelContainer/MarginContainer/HBoxContainer"]
@@ -227,7 +227,7 @@ focus_mode = 0
 mouse_filter = 1
 theme = ExtResource("2_0sr1o")
 theme_override_fonts/font = ExtResource("3_kelw5")
-text = "Keluar"
+text = "B_BACK"
 script = ExtResource("10_4j704")
 
 [node name="BoxContainer" type="BoxContainer" parent="UI/MenuContainer"]

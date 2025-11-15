@@ -1,0 +1,142 @@
+[gd_scene load_steps=9 format=3 uid="uid://c004qtx7xn717"]
+
+[ext_resource type="Theme" uid="uid://cvocwk6x1wj7h" path="res://config/themes/global.tres" id="1_28edv"]
+[ext_resource type="Script" uid="uid://c3fd0plp8cyhp" path="res://scripts/components/ui/language_selector/language_selector.gd" id="1_nkha0"]
+[ext_resource type="FontFile" uid="uid://xme5aeq8q7r7" path="res://resources/fonts/caskaydia/CaskaydiaCoveNerdFont-Bold.ttf" id="2_pd6kt"]
+[ext_resource type="Texture2D" uid="uid://gvqd53busr5v" path="res://resources/images/sprites/en.png" id="3_42l6m"]
+[ext_resource type="Texture2D" uid="uid://dm3okcux6wlug" path="res://resources/images/sprites/id.png" id="3_pd6kt"]
+[ext_resource type="Script" uid="uid://d02xwcnhil11m" path="res://scripts/modules/button/texture_button.gd" id="4_42l6m"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_28edv"]
+bg_color = Color(0, 0, 0, 0.3137255)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pd6kt"]
+bg_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[node name="LanguageSelector" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_28edv")
+script = ExtResource("1_nkha0")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 2
+theme = ExtResource("1_28edv")
+
+[node name="Panel" type="PanelContainer" parent="CenterContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_pd6kt")
+
+[node name="Menu" type="MarginContainer" parent="CenterContainer/Panel"]
+custom_minimum_size = Vector2(0, 280)
+layout_mode = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Panel/Menu"]
+layout_mode = 2
+alignment = 1
+
+[node name="Text" type="Label" parent="CenterContainer/Panel/Menu/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_pd6kt")
+text = "Select Language"
+horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="CenterContainer/Panel/Menu/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Buttons" type="HBoxContainer" parent="CenterContainer/Panel/Menu/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 10
+
+[node name="EN" type="VBoxContainer" parent="CenterContainer/Panel/Menu/VBoxContainer/Buttons"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="ENButton" type="TextureButton" parent="CenterContainer/Panel/Menu/VBoxContainer/Buttons/EN"]
+unique_name_in_owner = true
+texture_filter = 1
+custom_minimum_size = Vector2(82, 52)
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("1_28edv")
+texture_normal = ExtResource("3_42l6m")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("4_42l6m")
+
+[node name="Label" type="Label" parent="CenterContainer/Panel/Menu/VBoxContainer/Buttons/EN"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 12
+text = "English"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ID2" type="VBoxContainer" parent="CenterContainer/Panel/Menu/VBoxContainer/Buttons"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="ID2Button" type="TextureButton" parent="CenterContainer/Panel/Menu/VBoxContainer/Buttons/ID2"]
+unique_name_in_owner = true
+texture_filter = 1
+custom_minimum_size = Vector2(82, 52)
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("1_28edv")
+texture_normal = ExtResource("3_pd6kt")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("4_42l6m")
+
+[node name="Label" type="Label" parent="CenterContainer/Panel/Menu/VBoxContainer/Buttons/ID2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 12
+text = "Indonesia
+(Family Friendly)"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ID" type="VBoxContainer" parent="CenterContainer/Panel/Menu/VBoxContainer/Buttons"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="IDButton" type="TextureButton" parent="CenterContainer/Panel/Menu/VBoxContainer/Buttons/ID"]
+unique_name_in_owner = true
+texture_filter = 1
+custom_minimum_size = Vector2(82, 52)
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("1_28edv")
+texture_normal = ExtResource("3_pd6kt")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("4_42l6m")
+
+[node name="Label" type="Label" parent="CenterContainer/Panel/Menu/VBoxContainer/Buttons/ID"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 12
+text = "Indonesia"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control2" type="Control" parent="CenterContainer/Panel/Menu/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3

@@ -82,7 +82,7 @@ focus_neighbor_left = NodePath("../No")
 focus_neighbor_right = NodePath("../No")
 focus_mode = 0
 theme_override_fonts/font = ExtResource("3_rrfdk")
-text = "Iya"
+text = "ALERT_YES"
 script = ExtResource("3_6746o")
 
 [node name="BoxContainer" type="BoxContainer" parent="MarginContainer/Panel/Menu/VBoxContainer/Buttons"]
@@ -98,5 +98,5 @@ focus_neighbor_left = NodePath("../Yes")
 focus_neighbor_right = NodePath("../Yes")
 focus_mode = 0
 theme_override_fonts/font = ExtResource("3_rrfdk")
-text = "Tidak"
+text = "ALERT_NO"
 script = ExtResource("3_6746o")

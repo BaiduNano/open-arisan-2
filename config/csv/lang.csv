@@ -1,0 +1,38 @@
+key;id;id2;en
+ALERT_YES;Iya;Iya;Yes
+ALERT_NO;Tidak;Tidak;No
+ALERT_OK;Ok;Ok;Ok
+B_BACK;Keluar;Kembali;Back
+B_START;Mulai Ngocok;Mulai Arisan;Start
+B_ERASE_ALL;Hapus Semua;Hapus Semua;Erase All
+B_OPEN_LID;Buka Toples;Buka Tutup;Open Lid
+B_RESTART;Ulangi;Ulangi;Restart
+B_ADD_FILES;  Tambahkan File;  Tambahkan File;  Add Files
+B_ADD_TEXT;󰦨  Tulis Teks;󰦨  Tulis Teks;󰦨  Add Text
+L_ADD_FILES;"Dapat berupa gambar (PNG, JPG),
+maupun sekumpulan teks (TXT).";"Dapat berupa gambar (PNG, JPG),
+maupun sekumpulan teks (TXT).";"Import images (PNG, JPG),
+or list of texts (TXT)."
+L_ADD_TEXT;"Menambahkan teks
+secara manual.";"Menambahkan teks
+secara manual.";Add text manually.
+B_ADD;  Tambahkan;  Tambahkan;  Add
+L_TEXT_ADDED;+ Berhasil ditambahkan;+ Berhasil ditambahkan;+ Added successfully 
+TE_PLACEHOLDER;"Tulis sesuatu di sini.
+Pisahkan tiap peserta
+dengan Enter. Contoh:
+Dian
+Azka
+Remu";"Tulis sesuatu di sini.
+Pisahkan tiap peserta
+dengan Enter. Contoh:
+Dian
+Azka
+Remu";"Write something here.
+Seperate each participant
+using newline. Example:
+Robin
+Michael Austin
+Kevin Albert"
+B_CHANGE;Ganti;Ganti;Change
+B_REMOVE;Hapus;Hapus;Remove

@@ -16,8 +16,8 @@ func _ready() -> void:
 	_toggle_bg.call_deferred()
 
 func _toggle_bg() -> void:
-	if PaperQueue.get_data().is_empty(): %BG.modulate.a = 1.0
-	else: %BG.modulate.a = 0.33
+	if PaperQueue.get_data().is_empty(): %BGCont.modulate.a = 1.0
+	else: %BGCont.modulate.a = 0.33
 
 func _create_paper_from_existing(data: Dictionary) -> void:
 	var paper := await _create_paper(data.content, false, data.color)

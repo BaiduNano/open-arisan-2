@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="MyArisan 2"
-config/version="0.0.4"
+config/version="0.1.0.beta"
 run/main_scene="uid://dvnx03d746kdn"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 boot_splash/bg_color=Color(1, 1, 1, 1)
@@ -50,6 +50,11 @@ Grab={
 "events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":1,"canceled":false,"pressed":false,"double_click":false,"script":null)
 ]
 }
+
+[internationalization]
+
+locale/translations=PackedStringArray("res://config/csv/lang.id2.translation", "res://config/csv/lang.id.translation", "res://config/csv/lang.en.translation")
+locale/test="en"
 
 [layer_names]
 

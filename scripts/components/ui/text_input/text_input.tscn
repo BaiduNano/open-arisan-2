@@ -75,12 +75,7 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 focus_mode = 3
-placeholder_text = "Tulis sesuatu di sini.
-Pisahkan tiap peserta
-dengan Enter. Contoh:
-Dian
-Azka
-Remu"
+placeholder_text = "TE_PLACEHOLDER"
 context_menu_enabled = false
 wrap_mode = 1
 caret_blink = true
@@ -101,7 +96,7 @@ custom_minimum_size = Vector2(0, 72)
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("2_w6vyh")
-text = "+ Berhasil ditambahkan"
+text = "L_TEXT_ADDED"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -115,7 +110,7 @@ custom_minimum_size = Vector2(200, 42)
 layout_mode = 2
 focus_mode = 0
 theme_override_fonts/font = ExtResource("2_w6vyh")
-text = "  Tambahkan"
+text = "B_ADD"
 script = ExtResource("3_ghysm")
 
 [node name="CloseButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
@@ -124,5 +119,5 @@ custom_minimum_size = Vector2(148, 42)
 layout_mode = 2
 focus_mode = 0
 theme_override_fonts/font = ExtResource("2_w6vyh")
-text = "Kembali"
+text = "B_BACK"
 script = ExtResource("3_ghysm")

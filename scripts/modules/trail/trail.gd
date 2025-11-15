@@ -27,7 +27,7 @@ func destroy(dur := 0.5) -> void:
 		_last_pos = _node.global_position
 		_node = null
 
-func _init(parent: Node2D, node: Node, _color := Color.WHITE, _width := 16.0, max_length := 100, curve: Curve = load("uid://b5cphgha71oo2")) -> void:
+func _init(parent: Node2D, node: Node, _color := Color.WHITE, _width := 16.0, max_length := 50, curve: Curve = load("uid://b5cphgha71oo2")) -> void:
 	_node = node
 	_max_length = max_length
 	default_color = _color
